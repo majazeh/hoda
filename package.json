@@ -7,12 +7,19 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production",
+        "watch:css": "postcss ./resources/css/**/*.css -o ./public/css/style.css -w",
+        "build:css": "postcss ./resources/css/app.css -o ./public/css/style.css",
+        "production:css": "NODE_ENV=production postcss ./resources/css/app.css -o ./public/css/style.css"
+
     },
     "devDependencies": {
+        "autoprefixer": "^10.3.7",
         "axios": "^0.21",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "postcss": "^8.1.14",
+        "postcss-cli": "^9.0.1",
+        "tailwindcss": "^2.2.16"
     }
 }
