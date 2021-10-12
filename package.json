@@ -1,24 +1,45 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
-        "production": "mix --production",
-        "watch:css": "postcss ./resources/css/**/*.css -o ./public/css/style.css -w",
-        "build:css": "postcss ./resources/css/app.css -o ./public/css/style.css",
-        "production:css": "NODE_ENV=production postcss ./resources/css/app.css -o ./public/css/style.css"
-    },
-    "devDependencies": {
-        "autoprefixer": "^10.3.7",
-        "axios": "^0.21",
-        "laravel-mix": "^6.0.6",
-        "lodash": "^4.17.19",
-        "postcss": "^8.3.9",
-        "postcss-cli": "^9.0.1",
-        "tailwindcss": "^2.2.16"
-    }
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production",
+    "watch:css": "postcss ./resources/css/**/*.css -o ./public/css/style.css -w",
+    "build:css": "postcss ./resources/css/app.css -o ./public/css/style.css",
+    "production:css": "NODE_ENV=production postcss ./resources/css/app.css -o ./public/css/style.css"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.3.7",
+    "axios": "^0.21",
+    "laravel-mix": "^6.0.6",
+    "lodash": "^4.17.19",
+    "postcss": "^8.3.9",
+    "postcss-cli": "^9.0.1",
+    "tailwindcss": "^2.2.16"
+  },
+  "name": "hoda",
+  "description": "<p align=\"center\"><a href=\"https://laravel.com\" target=\"_blank\"><img src=\"https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg\" width=\"400\"></a></p>",
+  "version": "1.0.0",
+  "main": "postcss.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/majazeh/hoda.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/majazeh/hoda/issues"
+  },
+  "homepage": "https://github.com/majazeh/hoda#readme",
+  "dependencies": {
+    "@tailwindcss/forms": "^0.3.4"
+  }
 }

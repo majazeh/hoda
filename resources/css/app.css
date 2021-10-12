@@ -1,3 +1,228 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+	font-family: 'dana VF';
+	src: url('../fonts/Dana/dana2webGX.woff') format('woff-variations'),
+		 url('../fonts/Dana/dana2webGX.woff') format('woff');
+	font-display: fallback;
+}
+
+@font-face {
+	font-family: dana;
+	font-style: normal;
+	font-weight: 10;
+	src: url('../fonts/Dana/eot/dana-fanum-thin.eot');
+	src: url('../fonts/Dana/eot/dana-fanum-thin.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/Dana/woff2/dana-fanum-thin.woff2') format('woff2'),
+		 url('../fonts/Dana/woff/dana-fanum-thin.woff') format('woff');
+}
+
+@font-face {
+	font-family: dana;
+	font-style: normal;
+	font-weight: 200;
+	src: url('../fonts/Dana/eot/dana-fanum-extralight.eot');
+	src: url('../fonts/Dana/eot/dana-fanum-extralight.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/Dana/woff2/dana-fanum-extralight.woff2') format('woff2'),
+		 url('../fonts/Dana/woff/dana-fanum-extralight.woff') format('woff');
+}
+
+@font-face {
+	font-family: dana;
+	font-style: normal;
+	font-weight: 300;
+	src: url('../fonts/Dana/eot/dana-fanum-light.eot');
+	src: url('../fonts/Dana/eot/dana-fanum-light.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/Dana/woff2/dana-fanum-light.woff2') format('woff2'),
+		 url('../fonts/Dana/woff/dana-fanum-light.woff') format('woff');
+}
+
+@font-face {
+	font-family: dana;
+	font-style: normal;
+	font-weight: 500;
+	src: url('../fonts/Dana/eot/dana-fanum-medium.eot');
+	src: url('../fonts/Dana/eot/dana-fanum-medium.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/Dana/woff2/dana-fanum-medium.woff2') format('woff2'),
+		 url('../fonts/Dana/woff/dana-fanum-medium.woff') format('woff');
+}
+
+@font-face {
+	font-family: dana;
+	font-style: normal;
+	font-weight: 600;
+	src: url('../fonts/Dana/eot/dana-fanum-demibold.eot');
+	src: url('../fonts/Dana/eot/dana-fanum-demibold.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/Dana/woff2/dana-fanum-demibold.woff2') format('woff2'),
+		 url('../fonts/Dana/woff/dana-fanum-demibold.woff') format('woff');
+}
+
+@font-face {
+	font-family: dana;
+	font-style: normal;
+	font-weight: 750;
+	src: url('../fonts/Dana/eot/dana-fanum-ultrabold.eot');
+	src: url('../fonts/Dana/eot/dana-fanum-ultrabold.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/Dana/woff2/dana-fanum-ultrabold.woff2') format('woff2'),
+		 url('../fonts/Dana/woff/dana-fanum-ultrabold.woff') format('woff');
+}
+
+@font-face {
+	font-family: dana;
+	font-style: normal;
+	font-weight: 800;
+	src: url('../fonts/Dana/eot/dana-fanum-extrabold.eot');
+	src: url('../fonts/Dana/eot/dana-fanum-extrabold.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/Dana/woff2/dana-fanum-extrabold.woff2') format('woff2'),
+		 url('../fonts/Dana/woff/dana-fanum-extrabold.woff') format('woff');
+}
+
+@font-face {
+	font-family: dana;
+	font-style: normal;
+	font-weight: 900;
+	src: url('../fonts/Dana/eot/dana-fanum-black.eot');
+	src: url('../fonts/Dana/eot/dana-fanum-black.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/Dana/woff2/dana-fanum-black.woff2') format('woff2'),
+		 url('../fonts/Dana/woff/dana-fanum-black.woff') format('woff');
+}
+
+@font-face {
+	font-family: dana;
+	font-style: normal;
+	font-weight: bold;
+	src: url('../fonts/Dana/eot/dana-fanum-bold.eot');
+	src: url('../fonts/Dana/eot/dana-fanum-bold.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/Dana/woff2/dana-fanum-bold.woff2') format('woff2'),
+		 url('../fonts/Dana/woff/dana-fanum-bold.woff') format('woff');
+}
+
+@font-face {
+	font-family: dana;
+	font-style: normal;
+	font-weight: normal;
+	src: url('../fonts/Dana/eot/dana-fanum-regular.eot');
+	src: url('../fonts/Dana/eot/dana-fanum-regular.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/Dana/woff2/dana-fanum-regular.woff2') format('woff2'),
+		 url('../fonts/Dana/woff/dana-fanum-regular.woff') format('woff');
+}
+
+@layer utilities {
+    @variants responsive {
+      .variable-font-thin {
+        font-variation-settings: "wght" 100, "FANU" 1;
+      }
+
+      .variable-font-extralight {
+        font-variation-settings: "wght" 200, "FANU" 1;
+      }
+
+      .variable-font-light {
+        font-variation-settings: "wght" 300, "FANU" 1;
+      }
+
+      .variable-font-normal {
+        font-variation-settings: "wght" 400, "FANU" 1;
+      }
+
+      .variable-font-medium {
+        font-variation-settings: "wght" 500, "FANU" 1;
+      }
+
+      .variable-font-semibold {
+        font-variation-settings: "wght" 600, "FANU" 1;
+      }
+
+      .variable-font-bold {
+        font-variation-settings: "wght" 700, "FANU" 1;
+      }
+
+      .variable-font-extrabold {
+        font-variation-settings: "wght" 800, "FANU" 1;
+      }
+
+      .variable-font-black {
+        font-variation-settings: "wght" 900, "FANU" 1;
+      }
+    }
+  }
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+}
+
+html[lang="fa"], .fa {
+    font-family: dana;
+}
+
+@supports (font-variation-settings: normal) {
+    html[lang="fa"], .fa {
+        font-family: 'dana VF';
+        font-variation-settings: "wght" 400, "FANU" 1;
+    }
+}
+
+@layer utilities {
+    @variants responsive {
+        .focus {
+            @apply focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60 ring-brand;
+        }
+
+        .focus-current {
+            @apply focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-opacity-60;
+        }
+    }
+}
+
+.dir-rtl {
+	direction: rtl;
+}
+
+.dir-ltr {
+	direction: ltr;
+}
+
+/* Left */
+.placeholder-left::placeholder {
+    text-align: left;
+}
+
+.placeholder-left:-ms-input-placeholder {
+    text-align: left;
+}
+
+.placeholder-left::-ms-input-placeholder {
+    text-align: left;
+}
+
+/* Right */
+.placeholder-right::placeholder {
+    text-align: right;
+}
+
+.placeholder-right:-ms-input-placeholder {
+    text-align: right;
+}
+
+.placeholder-right::-ms-input-placeholder {
+    text-align: right;
+}
+
+/* Center */
+.placeholder-center::placeholder {
+    text-align: center;
+}
+
+.placeholder-center:-ms-input-placeholder {
+    text-align: center;
+}
+
+.placeholder-center::-ms-input-placeholder {
+    text-align: center;
+}
