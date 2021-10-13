@@ -13,18 +13,18 @@
             <div class="w-32 mx-auto mb-12">
                 <img src="./img/logo.png" alt="Logo">
             </div>
-        <div class="w-full xs:w-80">
+            <div class="w-full xs:w-80">
                 <form class="flex flex-col" action="{{ route('login') }}" method="POST">
                     @csrf
                     <div>
                         <label for="mobile" class="block variable-font-medium text-sm text-gray-700 mb-2">@lang('موبایل')</label>
-                        <input type="text" name="mobile" id="mobile" class="w-full text-sm text-gray-600 border border-gray-300 rounded-md h-8 px-2 pt-1 text-left dir-ltr focus">
+                        <input type="text" name="mobile" id="mobile" class="w-full text-sm text-gray-600 border border-gray-300 rounded-md h-8 pt-3 text-left dir-ltr focus">
                     </div>
                     <div class="mt-4">
                         <label for="password" class="block variable-font-medium text-sm text-gray-700 mb-2">@lang('رمز عبور')</label>
-                        <input type="password" name="password" id="password" class="w-full text-sm text-gray-600 border border-gray-300 rounded-md h-8 px-2 pt-1 text-left dir-ltr focus">
+                        <input type="password" name="password" id="password" class="w-full text-sm text-gray-600 border border-gray-300 rounded-md h-8 pt-3 text-left dir-ltr focus">
                     </div>
-                    <button type="submit" class="bg-green-700 hover:bg-green-800 transition text-white text-sm focus-current ring-green-700 mt-4 h-8 rounded-md">ورود</button>
+                    <button type="submit" class="bg-green-700 hover:bg-green-800 transition text-white focus-current ring-green-700 mt-4 h-8 rounded-md">ورود</button>
                 </form>
                 @if ($errors->any())
                     <div class="flex flex-col">

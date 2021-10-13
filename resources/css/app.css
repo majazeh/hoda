@@ -226,3 +226,7 @@ html[lang="fa"], .fa {
 .placeholder-center::-ms-input-placeholder {
     text-align: center;
 }
+
+select {
+	background-position: left 0.5rem center !important;
+}
