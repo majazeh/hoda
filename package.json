@@ -40,6 +40,7 @@
   },
   "homepage": "https://github.com/majazeh/hoda#readme",
   "dependencies": {
-    "@tailwindcss/forms": "^0.3.4"
+    "@tailwindcss/forms": "^0.3.4",
+    "chart.js": "^3.6.0"
   }
 }
