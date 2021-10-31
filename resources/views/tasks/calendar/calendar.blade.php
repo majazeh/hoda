@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@lang('Create Task')</title>
     <link rel="stylesheet" href="../../css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
 </head>
 <body class="bg-gray-100">
     @include('header')
@@ -14,7 +15,8 @@
             <h2 class="text-lg variable-font-semibold text-white cursor-default">@lang('تقویم')</h2>
             <div class="bg-white rounded-lg p-8 mt-4 shadow-md">
                 @include('tasks.calendar.filter')
-                @include('tasks.calendar.weekly')
+                @include('tasks.calendar.daily')
+                {{-- @include('tasks.calendar.weekly') --}}
                 {{-- @include('tasks.calendar.monthly') --}}
                 {{-- @include('tasks.calendar.yearly') --}}
             </div>
