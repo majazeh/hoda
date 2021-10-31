@@ -1,7 +1,7 @@
 <header class="h-60 bg-center bg-no-repeat bg-cover py-3" style="background-image: url('{{ asset('/img/hoda-cover.jpg') }}')">
     <div class="container mx-auto px-4 flex items-center justify-between border-b border-white border-opacity-10 pb-4">
-        <a href="#" class="w-16">
-            <img src="{{ asset('/img/logo-white.png') }}" alt="brand">
+        <a href="#" class="text-white text-xl relative top-1 variable-font-bold">
+            <h1>هدا</h1>
         </a>
         <a href="#" class="flex items-center text-white hover:shadow-md transition">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -10,8 +10,8 @@
 <body>
     <div class="flex min-h-screen">
         <div class="flex-1 flex items-center justify-center flex-col p-4">
-            <div class="w-32 mx-auto mb-12">
-                <img src="./img/logo.png" alt="Logo">
+            <div class="mx-auto mb-12">
+                <h1 class="variable-font-bold text-6xl">هدا</h1>
             </div>
             <div class="w-full xs:w-80">
                 <form class="flex flex-col" action="{{ route('login') }}" method="POST">
