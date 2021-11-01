@@ -37,7 +37,8 @@ class Weekly extends Task
                 $this->title,
                 $this->qualitative,
                 $this->coefficient,
-                $this->toDoAt
+                $this->toDoAt,
+                'weekly'
             );
             $this->toDoAt = $this->toDoAt->addDays(7);
             $count++;

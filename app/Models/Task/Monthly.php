@@ -65,7 +65,8 @@ class Monthly extends Task
                 $this->title,
                 $this->qualitative,
                 $this->coefficient,
-                $this->toDoAt
+                $this->toDoAt,
+                'monthly'
             );
             $this->toDoAt = $this->findDay($this->nextDay($this->toDoAt));
             $count++;

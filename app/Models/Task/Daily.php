@@ -28,7 +28,8 @@ class Daily extends Task
                 $this->title,
                 $this->qualitative,
                 $this->coefficient,
-                $this->toDoAt
+                $this->toDoAt,
+                'daily'
             );
             $this->toDoAt = $this->toDoAt->addDay();
             $count++;

@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html dir="rtl" lang="fa">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@lang('Create Task')</title>
-    <link rel="stylesheet" href="../../css/style.css">
-</head>
-<body class="bg-gray-100">
-    @include('header')
+@extends('app')
+@section('main')
     <main class="container mx-auto px-4 py-8">
         <div class="relative -top-44">
             <h2 class="text-lg variable-font-semibold text-white cursor-default">@lang('ساخت وظیفه')</h2>
             <div class="bg-white rounded-lg p-8 mt-4 shadow-md">
-                <form action="{{ route('tasks.store') }}" method="POST">
+                <form action="{{ route('tasks.store') }}" method="POST" x-data='{"frequency_type" : null}'>
                     @csrf
                     @if ($errors->any())
                         <div class="flex flex-col">
@@ -29,8 +20,9 @@
                                 <input type="text" name="title" id="title" value="{{ old('title') }}" class="w-full text-sm text-gray-600 border border-gray-300 rounded-md h-8 focus">
                             </div>
                             <div class="mt-4">
-                                <label for="start_at" class="block variable-font-medium text-sm text-gray-700 mb-1">@lang('شروع از')</label>
-                                <input name="start_at" id="start_at" value="{{ old('start_at') ?:  time()}}" class="w-full text-sm text-gray-600 border border-gray-300 rounded-md h-8 px-2 focus">
+                                <label for="start_at_picker" class="block variable-font-medium text-sm text-gray-700 mb-1">@lang('شروع از')</label>
+                                <input id="start_at_picker" class="w-full text-sm text-gray-600 border border-gray-300 rounded-md h-8 px-2 focus">
+                                <input type="hidden" name="start_at" id="start_at" value="{{ old('start_at') ?:  time()}}">
                             </div>
                             <div class="mt-4">
                                 <label for="coefficient" class="block variable-font-medium text-sm text-gray-700 mb-1">@lang('ضریب')</label>
@@ -46,14 +38,14 @@
                         <div>
                             <div>
                                 <label for="frequency_type" class="block variable-font-medium text-sm text-gray-700 mb-1">@lang('نحوه تکرار')</label>
-                                <select name="frequency_type" id="frequency_type" class="w-full text-xs text-gray-600 border border-gray-300 rounded-md h-8 px-2 focus">
+                                <select name="frequency_type" id="frequency_type" class="w-full text-xs text-gray-600 border border-gray-300 rounded-md h-8 px-2 focus" x-model="frequency_type">
                                     <option disabled selected>دوره تکرار</option>
                                     <option value="daily">روزانه</option>
                                     <option value="weekly">هفتگی</option>
                                     <option value="monthly">ماهانه</option>
                                 </select>
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4" x-show="frequency_type == 'weekly'">
                                 <label for="weekday" class="block variable-font-medium text-sm text-gray-700 mb-1">@lang('انتخاب روز هفته')</label>
                                 <select name="weekday" id="weekday" class="w-full text-xs text-gray-600 border border-gray-300 rounded-md h-8 px-2 focus">
                                     <option disabled selected>روز هفته</option>
@@ -66,7 +58,7 @@
                                     <option value="6">جمعه</option>
                                 </select>
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4" x-show="frequency_type == 'monthly'">
                                 <label for="month_day" class="block variable-font-medium text-sm text-gray-700 mb-1">@lang('انتخاب روز ماه')</label>
                                 <select name="month_day" id="month_day" class="w-full text-xs text-gray-600 border border-gray-300 rounded-md h-8 px-2 focus">
                                     <option disabled selected>روز ماه</option>
@@ -96,5 +88,19 @@
             </div>
         </div>
     </main>
-</body>
-</html>
+    <script>
+        $('#start_at_picker').persianDatepicker(
+            {
+                "format": "YYYY/MM/DD",
+                "autoClose": true,
+                "altFormat": "X",
+                "altField": "#start_at",
+                "toolbox": {
+                    "calendarSwitch": {
+                        "enabled": false,
+                    },
+                }
+            }
+        );
+    </script>
+@endsection

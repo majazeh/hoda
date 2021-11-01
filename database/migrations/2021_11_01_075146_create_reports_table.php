@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTasksTable extends Migration
+class CreateReportsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreateTasksTable extends Migration
      */
     public function up()
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('title');
-            $table->boolean('qualitative')->default(false);
-            $table->unsignedTinyInteger('coefficient');
-            $table->unsignedTinyInteger('score')->default('0');
-            $table->timestamp('todo_at')->nullable();
-            $table->timestamp('reported_at')->nullable();
-            $table->timestamps();
+            $table->string('format');
+            $table->string('value');
+            $table->unsignedInteger('total');
+            $table->unsignedInteger('reported')->default(0);
+            $table->unsignedBigInteger('coefficient')->default(0);
+            $table->unique(['user_id', 'format', 'value']);
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
@@ -34,6 +33,6 @@ class CreateTasksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('reports');
     }
 }
