@@ -4,7 +4,7 @@
 <script>
     const ctx = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(ctx, {
-        type: 'line',
+        type: 'bar',
         data: {
             labels : {!! $tasks->pluck("title")->toJson() !!},
             datasets: [
