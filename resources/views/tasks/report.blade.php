@@ -45,13 +45,13 @@
                             <div class="flex-1 px-2 mt-1 sm:mt-0" id="report_input">
                                 <span class="sm:hidden text-xs text-gray-400">@lang('گزارش:')</span>
                                 @if ($task->qualitative)
-                                    <select name="score" id="score" data-id="{{ $task->id }}" class="w-24 h-8 pt-1 text-xs text-gray-500 border border-gray-300 rounded-md px-2 focus">
-                                        <option selected disabled></option>
+                                    <select name="score" id="score" data-id="{{ $task->id }}" class="flex items-center w-24 h-7 pt-0 pb-0 text-xs text-gray-500 border border-gray-300 rounded px-2 focus">
+                                        <option selected>انتخاب کنید</option>
                                         <option value="0" {{ $task->score == 0 ? 'selected' : '' }}>انجام نشده</option>
                                         <option value="1" {{ $task->score != 0 ? 'selected' : '' }}>انجام شده</option>
                                     </select>
                                 @else
-                                    <select name="score" id="score" data-id="{{ $task->id }}" class="w-16 h-6 pt-1 text-xs text-gray-500 border border-gray-300 rounded-md px-2 focus">
+                                    <select name="score" id="score" data-id="{{ $task->id }}" class="flex items-center w-24 h-7 pt-0 pb-0 text-xs text-gray-500 border border-gray-300 rounded px-2 focus">
                                         <option selected disabled></option>
                                         <option value="0"  {{ $task->score == 0  ? 'selected' : '' }}>0</option>
                                         <option value="1"  {{ $task->score == 1 * $task->coefficient  ? 'selected' : '' }}>1</option>
