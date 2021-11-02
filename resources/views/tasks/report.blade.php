@@ -29,6 +29,7 @@
                         <div class="flex-1 px-2">ضریب</div>
                         <div class="flex-1 px-2 hidden lg:block">نحوه تکرار</div>
                         <div class="flex-1 px-2">گزارش</div>
+                        <div class="flex-1 px-2"></div>
                     </div>
                     @foreach ($tasks as $task)
                         <div class="flex flex-col sm:flex-row sm:items-center cursor-default text-sm text-gray-500 bg-gray-50 p-2 rounded mt-2">
@@ -42,8 +43,8 @@
                                 <span>{{ $task->coefficient }}</span>
                             </div>
                             <div class="flex-1 px-2 hidden lg:block">@lang($task->frequency_type)</div>
-                            <div class="flex-1 px-2 mt-1 sm:mt-0" id="report_input">
-                                <span class="sm:hidden text-xs text-gray-400">@lang('گزارش:')</span>
+                            <div class="flex-1 flex items-center px-2 mt-1 sm:mt-0" id="report_input">
+                                <span class="sm:hidden text-xs text-gray-400 ml-2">@lang('گزارش:')</span>
                                 @if ($task->qualitative)
                                     <select name="score" id="score" data-id="{{ $task->id }}" class="flex items-center w-24 h-7 pt-0 pb-0 text-xs text-gray-500 border border-gray-300 rounded px-2 focus">
                                         <option selected>انتخاب کنید</option>
@@ -61,6 +62,18 @@
                                         <option value="5"  {{ $task->score == 5 * $task->coefficient  ? 'selected' : '' }}>5</option>
                                     </select>
                                 @endif
+                            </div>
+                            <div class="flex-1 flex px-2 mt-4 sm:mt-0 justify-end">
+                                <a href="#" class="text-gray-400 hover:text-blue-600 transition ml-4" title="@lang('ویرایش')" aria-label="@lang('ویرایش')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                    </svg>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-red-600 transition" title="@lang('حذف')" aria-label="@lang('حذف')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     @endforeach
