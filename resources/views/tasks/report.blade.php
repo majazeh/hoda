@@ -6,7 +6,7 @@
             <div class="bg-white rounded-lg p-8 mt-4 shadow-md">
                 <div class="flex items-center justify-between">
                     <h3 class="text-xs sm:text-sm text-gray-600 cursor-default border-r-2 border-gray-400 pr-2">{{ $current->format('%d %B Y') }}</h3>
-                    <div class="flex items-center" x-data='{"show" : false}'>
+                    <div class="flex items-center relative" x-data='{"show" : false}'>
                         <a href="{{ route('tasks.report', ['date' => (clone $current)->subDays(1)->format('Y-m-d')]) }}" class="flex items-center text-xs text-gray-500 h-7 px-2 sm:px-4 border border-gray-300 rounded hover:bg-gray-50 transition" title="@lang('گزارش روز قبل')" aria-label="@lang('گزارش روز قبل')">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -19,7 +19,7 @@
                             </svg>
                             <span class="mr-2 hidden sm:block">@lang('تقویم')</span>
                         </a>
-                        <div id="calander" x-show="show"></div>
+                        <div class="absolute left-0 top-0" id="calander" x-show="show"></div>
                     </div>
                 </div>
                 <div class="mt-8">

@@ -166,6 +166,10 @@ html[lang="fa"], .fa {
         font-family: 'dana VF';
         font-variation-settings: "wght" 400, "FANU" 1;
     }
+
+	#calander * {
+		font-family: 'dana VF' !important;
+	}
 }
 
 @layer utilities {
