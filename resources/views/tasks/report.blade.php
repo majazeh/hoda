@@ -1,7 +1,7 @@
 @extends('app')
 @section('main')
     <main class="container mx-auto px-4 py-8">
-        <div class="relative -top-44">
+        <div class="relative -top-32 sm:-top-44">
             <h2 class="text-lg variable-font-semibold text-white cursor-default">@lang('گزارش')</h2>
             <div class="bg-white rounded-lg p-8 mt-4 shadow-md">
                 <div class="flex items-center justify-between">
@@ -47,7 +47,7 @@
                                 <span class="sm:hidden text-xs text-gray-400 ml-2">@lang('گزارش:')</span>
                                 @if ($task->qualitative)
                                     <select name="score" id="score" data-id="{{ $task->id }}" class="flex items-center w-24 h-7 pt-0 pb-0 text-xs text-gray-500 border border-gray-300 rounded px-2 focus">
-                                        <option selected>انتخاب کنید</option>
+                                        <option selected disabled>انتخاب کنید</option>
                                         <option value="0" {{ $task->score == 0 ? 'selected' : '' }}>انجام نشده</option>
                                         <option value="1" {{ $task->score != 0 ? 'selected' : '' }}>انجام شده</option>
                                     </select>

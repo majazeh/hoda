@@ -1,7 +1,7 @@
 @extends('app')
 @section('main')
 <main class="container mx-auto px-4 py-8">
-    <div class="relative -top-44">
+    <div class="relative -top-32 sm:-top-44">
         <h2 class="text-lg variable-font-semibold text-white cursor-default">@lang('پیش‌خوان')</h2>
         <div class="bg-white rounded-lg p-8 mt-4 shadow-md h-96">
             <div class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
