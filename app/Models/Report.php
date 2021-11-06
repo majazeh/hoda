@@ -101,7 +101,7 @@ class Report extends Model
         }
         return $collection;
     }
-    public function getRelationValue($key)
+    public function getRelativeAttribute()
     {
         return $this->coefficient ? $this->reported / $this->coefficient : 0;
     }

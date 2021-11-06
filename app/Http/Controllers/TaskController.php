@@ -33,13 +33,36 @@ class TaskController extends Controller
         ])->get();
         $data['tasks'] = $query;
         $data['current'] = $date;
+        $data['today'] = Jalalian::now();
+        $data['nav_link'] = $date->toCarbon()->format('Y-m-d')  == Carbon::now()->format('Y-m-d') ? (clone $date)->subDays() : Jalalian::now();
         return view('tasks.report', $data);
     }
 
     public function index(Request $request){
-        $query = Task::where('user_id', auth()->id());
-        $tasks = $query->paginate(perPage: 5);
-        return view('tasks.index', ['tasks' => $tasks]);
+        $query = Task::where('user_id', auth()->id())
+        ->groupBy('title')->select('title');
+        return view('tasks.index', ['tasks' => $query->get()]);
+    }
+
+    public function show(Request $request, $title){
+        $query = Task::where('user_id', auth()->id())->where('title', $title)->get();
+        $current = Jalalian::now();
+        $startOfWeek = $current->getDayOfWeek() ? (clone $current)->subDays($current->getDayOfWeek()) : clone $current;
+        $endOfWeek = (int) (clone $startOfWeek)->addDays(6)->toCarbon()->format('Ymd');
+        $startOfWeek = (int) $startOfWeek->toCarbon()->format('Ymd');
+        $week = $query->where('toDoDate', '>=', $startOfWeek)->where('toDoDate', '<=', $endOfWeek);
+
+        $startOfMonth =(int) (new Jalalian($current->getYear(), $current->getMonth(), 1))->toCarbon()->format('Ymd');
+        $endOfMonth = (int) (new Jalalian($current->getYear(), $current->getMonth(), $current->getMonthDays()))->toCarbon()->format('Ymd');
+        $month = $query->where('toDoDate', '>=', $startOfMonth)->where('toDoDate', '<=', $endOfMonth);
+
+        $data = [
+            'tasks' => $query,
+            'week' => $week,
+            'month' => $month
+        ];
+
+        return view('tasks.show', $data);
     }
 
     public function create(){

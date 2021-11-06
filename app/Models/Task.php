@@ -41,13 +41,21 @@ class Task extends Model
     public function getJalaliTodoAtAttribute(){
         return Jalalian::fromCarbon($this->todo_at);
     }
+    public function getJalaliTodoAtStringAttribute(){
+        return Jalalian::fromCarbon($this->todo_at)->format('Y-m-d');
+    }
     public function getJalaliReportedAtAttribute(){
         if(!$this->attributes['reported_at']) return null;
         return Jalalian::fromCarbon($this->reported_at);
     }
 
-    public function getRelationValue($key)
+    public function getRelativeAttribute()
     {
         return $this->score / $this->coefficient;
+    }
+
+    public function getToDoDateAttribute()
+    {
+        return (int) str_replace('-', '', substr($this->attributes['todo_at'], 0, 10));
     }
 }

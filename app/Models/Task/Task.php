@@ -28,6 +28,10 @@ abstract class Task
     public function create(){
         $userId = auth()->id();
         foreach($this->frequencies as $frequencie){
+            $exists = \App\Models\Task::where('user_id', auth()->id())
+            ->where('title', $frequencie->title)
+            ->where('todo_at', $frequencie->todo_at->format('Y-m-d 00:00:00'))->first();
+            if($exists) continue;
             $date = Jalalian::fromCarbon($frequencie->todo_at);
             $year = $date->format('Y');
             $month = $date->format('Y-m');

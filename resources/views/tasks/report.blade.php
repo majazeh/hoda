@@ -7,13 +7,13 @@
                 <div class="flex items-center justify-between">
                     <h3 class="text-xs sm:text-sm text-gray-600 cursor-default border-r-2 border-gray-400 pr-2">{{ $current->format('%d %B Y') }}</h3>
                     <div class="flex items-center relative" x-data='{"show" : false}'>
-                        <a href="{{ route('tasks.report', ['date' => (clone $current)->subDays(1)->format('Y-m-d')]) }}" class="flex items-center text-xs text-gray-500 h-7 px-2 sm:px-4 border border-gray-300 rounded hover:bg-gray-50 transition" title="@lang('گزارش روز قبل')" aria-label="@lang('گزارش روز قبل')">
+                        <a href="{{ route('tasks.report', ['date' => $nav_link->format('Y-m-d')]) }}" class="flex items-center text-xs text-gray-500 h-7 px-2 sm:px-4 border border-gray-300 rounded hover:bg-gray-50 transition" title="{{ $today == $nav_link ? 'گزارش امروز' : 'گزارش روز قبل' }}" aria-label="{{ $today == $nav_link ? 'گزارش امروز' : 'گزارش روز قبل' }}">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                             </svg>
-                            <span class="hidden sm:block">@lang('گزارش روز قبل')</span>
+                            <span class="hidden sm:block">{{ $today == $nav_link ? 'گزارش امروز' : 'گزارش روز قبل' }}</span>
                         </a>
-                        <a id="calanderNav" class="flex items-center text-xs text-blue-600 h-7 px-2 sm:px-4 border border-blue-600 rounded hover:bg-blue-50 transition mr-2" title="@lang('تقویم')" aria-label="@lang('تقویم')" x-on:click="show = !show">
+                        <a id="calanderNav" class="flex items-center text-xs text-blue-600 h-7 px-2 sm:px-4 border border-blue-600 rounded hover:bg-blue-50 transition mr-2" title="@lang('تقویم')" aria-label="@lang('تقویم')" x-on:click="show = !show;" @hide="show = false; $('#calander').hide()">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
@@ -84,20 +84,38 @@
     <script>
         $('#calander').persianDatepicker(
             {
-                'inline' : true,
-                "maxDate": new Date(),
-                "format": "YYYY/MM/DD",
-                "autoClose": true,
-                "toolbox": {
-                    "calendarSwitch": {
-                        "enabled": false,
+                inline : true,
+                maxDate: new Date(),
+                format: "YYYY/MM/DD",
+                autoClose: true,
+                toolbox: {
+                    calendarSwitch: {
+                        enabled: false,
                     },
                 },
-                onSelect : function(unix){
-                    const date = new persianDate.unix(unix / 1000)
-                    location.href=`/dashboard/tasks/report?date=${date.year()}-${date.month()}-${date.date()}`
+                dayPicker : {
+                    onSelect : function(unix){
+                        const date = new persianDate.unix(unix / 1000)
+                        location.href=`/dashboard/tasks/report?date=${date.year()}-${date.month()}-${date.date()}`
+                    }
                 }
             }
         );
+        let closed = true;
+        $(document).on('click', function(e){
+            if(closed){
+                $('#calanderNav')[0].click();
+                const cld = $('#calanderNav')[0];
+                cld.dispatchEvent(new Event('hide'))
+            }else{
+                closed = true;
+            }
+        });
+        $('#calander').on('click', function(e){
+            if($(e.target).parents('#calander').length){
+                closed = false;
+            }
+        });
+
     </script>
 @endsection
