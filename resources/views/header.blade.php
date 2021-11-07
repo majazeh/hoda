@@ -31,7 +31,7 @@
                 <option value="{{ route('users.index') }}">@lang('لیست کاربران')</option>
             @endif
             <option value="{{ route('tasks.create') }}">@lang('ساخت وظیفه')</option>
-            <option value="{{ route('tasks.index') }}">@lang('ساخت وظیفه')</option>
+            <option value="{{ route('tasks.index') }}">@lang('لیست وظایف')</option>
             <option value="{{ route('tasks.report') }}">@lang('گزارش‌دهی امروز')</option>
             <option value="{{ route('tasks.report', ['date' => Morilog\Jalali\Jalalian::now()->subDays()->format('Y-m-d')]) }}">@lang('گزارش‌دهی روز قبل')</option>
             <option value="{{ route('calendar.daily') }}">@lang('تقویم')</option>
