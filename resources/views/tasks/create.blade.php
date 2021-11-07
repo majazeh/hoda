@@ -83,7 +83,7 @@
                     <div class="mt-6">
                         <label class="inline-flex group">
                             <input type="checkbox" name="qualitative" id="qualitative" {{ old('qualitative') || isset($task) && $task->qualitative ? 'checked' : '' }} class="w-3.5 h-3.5 rounded-sm">
-                            <span class="text-xs text-gray-600 mr-2 group-hover:text-brand">@lang('این وظیفه، یک وظیفه کیفی است که قصد دارم به صورت «انجام دادم» یا «انجام ندادم» گزارش کنم؛ وظایف کمی نیز یک بازه عددی بین ۰ تا ۱۰ گزارش می‌شوند.')</span>
+                            <span class="text-xs text-gray-600 mr-2 group-hover:text-brand">@lang('این وظیفه، یک وظیفه کیفی است که قصد دارم به صورت «انجام دادم» یا «انجام ندادم» گزارش کنم؛ وظایف کمی نیز یک بازه عددی بین ۰ تا ۵ گزارش می‌شوند.')</span>
                         </label>
                     </div>
                     <div class="mt-4 flex justify-end">
