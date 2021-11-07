@@ -41,7 +41,7 @@ class TaskController extends Controller
     public function index(Request $request){
         $query = Task::where('user_id', auth()->id())
         ->groupBy('title')->select('title');
-        return view('tasks.index', ['tasks' => $query->get()]);
+        return view('tasks.index', ['tasks' => $query->paginate()]);
     }
 
     public function show(Request $request, $title){

@@ -1,12 +1,13 @@
 <header class="h-60 bg-center bg-no-repeat bg-cover py-3" style="background-image: url('{{ asset('/img/hoda-cover.jpg') }}')">
     <div class="container mx-auto px-4 flex items-center justify-between border-b border-white border-opacity-10 pb-4 mb-4">
         <div class="flex items-center">
-            <a href="#" class="text-white text-xl relative top-1 variable-font-bold ml-14">
+            <a href="/dashboard" class="text-white text-xl relative top-1 variable-font-bold ml-14">
                 <h1>هدا</h1>
             </a>
             <div class="hidden sm:flex items-center relative top-1 text-sm">
                 @if (auth()->id() == 1)
                     <a href="{{ route('users.create') }}" class="text-gray-200 hover:text-blue-400 transition ml-8">@lang('ساخت کاربر')</a>
+                    <a href="{{ route('users.index') }}" class="text-gray-200 hover:text-blue-400 transition ml-8">@lang('لیست کاربران')</a>
                 @endif
                 <a href="{{ route('tasks.create') }}" class="text-gray-200 hover:text-blue-400 transition ml-8">@lang('ساخت یک وظیفه')</a>
                 <a href="{{ route('tasks.index') }}" class="text-gray-200 hover:text-blue-400 transition ml-8">@lang('لیست وظایف')</a>
@@ -23,12 +24,17 @@
         </a>
     </div>
     <div class="container mx-auto px-4 flex items-center mb-4 sm:hidden">
-        <select name="menu" id="menu" class="w-full rounded-md px-6 text-gray-700">
+        <select name="menu" id="menu" class="w-full rounded-md px-6 text-gray-700" onchange="location.href = this.value">
             <option selected disabled>فهرست</option>
-            <option>@lang('ساخت یک وظیفه')</option>
-            <option>@lang('گزارش‌دهی امروز')</option>
-            <option>@lang('گزارش‌دهی روز قبل')</option>
-            <option>@lang('تقویم')</option>
+            @if (auth()->id() == 1)
+                <option value="{{ route('users.create') }}">@lang('ساخت کاربر')</option>
+                <option value="{{ route('users.index') }}">@lang('لیست کاربران')</option>
+            @endif
+            <option value="{{ route('tasks.create') }}">@lang('ساخت وظیفه')</option>
+            <option value="{{ route('tasks.index') }}">@lang('ساخت وظیفه')</option>
+            <option value="{{ route('tasks.report') }}">@lang('گزارش‌دهی امروز')</option>
+            <option value="{{ route('tasks.report', ['date' => Morilog\Jalali\Jalalian::now()->subDays()->format('Y-m-d')]) }}">@lang('گزارش‌دهی روز قبل')</option>
+            <option value="{{ route('calendar.daily') }}">@lang('تقویم')</option>
         </select>
     </div>
 </header>
