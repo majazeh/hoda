@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/pwt.datepicker/css/persian-datepicker.min.css">
     <script src="/js/jquery-3.6.0.min.js"></script>
-    <script defer src="/js/alpinejs"></script>
+    <script defer src="/js/alpinejs.js"></script>
     <script src="/js/persian-date.min.js"></script>
     <script src="/js/main.js?_={{ filemtime(public_path('/js/main.js')) }}" defer></script>
     <script src="/pwt.datepicker/js/persian-datepicker.min.js"></script>
