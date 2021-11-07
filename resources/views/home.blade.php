@@ -9,7 +9,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                     </svg>
-                    <span class="text-sm relative top-0.5 mr-2 variable-font-medium">@lang('ساخت یک وظیفه')</span>
+                    <span class="text-sm relative top-0.5 mr-2 variable-font-medium">@lang('ساخت وظیفه')</span>
                 </a>
             </div>
             <div class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 mt-4">

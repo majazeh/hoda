@@ -34,7 +34,7 @@
                                     <option value="1" {{ isset($task) && $task->coefficient == 1 ? 'selected' : null}}>۱. کارهای کم ارزش</option>
                                     <option value="2" {{ isset($task) && $task->coefficient == 2 ? 'selected' : null}}>۲. کارهای عادی</option>
                                     <option value="3" {{ isset($task) && $task->coefficient == 3 ? 'selected' : null}}>۳. کارهای ارزشمند</option>
-                                    <option value="4" {{ isset($task) && $task->coefficient == 4 ? 'selected' : null}}>۴. کارهای پر ازرش</option>
+                                    <option value="4" {{ isset($task) && $task->coefficient == 4 ? 'selected' : null}}>۴. کارهای پر ارزش</option>
                                 </select>
                             </div>
                         </div>
