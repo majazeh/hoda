@@ -5,6 +5,9 @@
                 <h1>هدا</h1>
             </a>
             <div class="hidden sm:flex items-center relative top-1 text-sm">
+                @if (auth()->id() == 1)
+                    <a href="{{ route('users.create') }}" class="text-gray-200 hover:text-blue-400 transition ml-8">@lang('ساخت کاربر')</a>
+                @endif
                 <a href="{{ route('tasks.create') }}" class="text-gray-200 hover:text-blue-400 transition ml-8">@lang('ساخت یک وظیفه')</a>
                 <a href="{{ route('tasks.index') }}" class="text-gray-200 hover:text-blue-400 transition ml-8">@lang('لیست وظایف')</a>
                 <a href="{{ route('tasks.report') }}" class="text-gray-200 hover:text-blue-400 transition ml-8">@lang('گزارش‌دهی امروز')</a>

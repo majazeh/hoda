@@ -61,6 +61,7 @@ class TaskController extends Controller
             'week' => $week,
             'month' => $month
         ];
+        $data['title'] = $title;
 
         return view('tasks.show', $data);
     }
@@ -114,5 +115,79 @@ class TaskController extends Controller
             'reported_at' => Carbon::now()
         ]);
         DB::commit();
+    }
+
+    public function destroy(Task $task){
+        $this->authorize('delete', $task);
+        DB::beginTransaction();
+        $task->delete();
+        $userID = auth()->id();
+        $date = Jalalian::fromCarbon($task->todo_at);
+        $year = $date->format('Y');
+        $month = $date->format('Y-m');
+        $day = $date->format('Y-m-d');
+        $taskScore = $task->score;
+        $date = Jalalian::fromCarbon($task->todo_at);
+        $year = $date->format('Y');
+        $month = $date->format('Y-m');
+        $day = $date->format('Y-m-d');
+        $weight = $task->coefficient * 10;
+        $coefficient = $task->coefficient;
+        DB::statement("UPDATE `reports` SET total = total-$weight, coefficient = coefficient - $coefficient WHERE `format` = 'year' AND `value` = '$year'");
+        DB::statement("UPDATE `reports` SET total = total-$weight, coefficient = coefficient - $coefficient WHERE `format` = 'month' AND `value` = '$month'");
+        DB::statement("UPDATE `reports` SET total = total-$weight, coefficient = coefficient - $coefficient WHERE `format` = 'day' AND `value` = '$day'");
+        DB::commit();
+        return back();
+    }
+
+    public function edit(Task $task){
+        $this->authorize('delete', $task);
+        return view('tasks.create', ['task' => $task]);
+    }
+    public function update(Request $request, Task $task){
+        $this->authorize('delete', $task);
+        $data = $request->validate([
+            'title' => 'required|min:3|max:150',
+            'qualitative' => 'nullable',
+            'coefficient' => 'required|in:1,2,3,4'
+        ]);
+        if(isset($data['qualitative'])){
+            $data['qualitative'] = true;
+        }
+        $oldScore = $task->score;
+        if($task->score && ((isset($data['qualitative']) && $data['qualitative'] != $task->qualitative) || ($data['coefficient'] != $task->coefficient))){
+            if(isset($data['qualitative']) && $data['qualitative'] == true && !$task->qualitative){
+                $task->score = $task->coefficient * 5;
+            }
+            $data['score'] = ($task->score / $task->coefficient) * $data['coefficient'];
+        }
+        DB::beginTransaction();
+        $reported = 'reported';
+        if(isset($data['score'])){
+            if($data['score'] > $oldScore){
+                $reported = "reported + ". ($data['score'] - $oldScore);
+            }elseif($data['score'] < $oldScore){
+                $reported = "reported - ". ($oldScore - $data['score']);
+            }
+        }
+        $coefficient = 'coefficient';
+        if(isset($data['coefficient']) && $data['coefficient'] != $task->coefficient){
+            if($data['coefficient'] > $task->coefficient){
+                $coefficient = "coefficient + ". ($data['coefficient'] - $task->coefficient);
+            }elseif($data['coefficient'] < $task->coefficient){
+                $coefficient = "coefficient - ". ($task->coefficient - $data['coefficient']);
+            }
+        }
+        $userID = auth()->id();
+        $date = Jalalian::fromCarbon($task->todo_at);
+        $year = $date->format('Y');
+        $month = $date->format('Y-m');
+        $day = $date->format('Y-m-d');
+        DB::statement("UPDATE reports SET reported = $reported, coefficient = $coefficient where user_id = $userID AND `format` = 'year' AND `value` = '$year'");
+        DB::statement("UPDATE reports SET reported = $reported, coefficient = $coefficient where user_id = $userID AND `format` = 'month' AND `value` = '$month'");
+        DB::statement("UPDATE reports SET reported = $reported, coefficient = $coefficient where user_id = $userID AND `format` = 'day' AND `value` = '$day'");
+        $task->update($data);
+        DB::commit();
+        return back();
     }
 }

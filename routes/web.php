@@ -24,4 +24,5 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
     Route::get('calendar/yearly', [\App\Http\Controllers\CalendarController::class, 'yearly'])->name('calendar.yearly');
     Route::resource('tasks', \App\Http\Controllers\TaskController::class);
     Route::post('/reports/{task}', [\App\Http\Controllers\TaskController::class, 'reportStore']);
+    Route::resource('users', \App\Http\Controllers\UserController::class);
 });
