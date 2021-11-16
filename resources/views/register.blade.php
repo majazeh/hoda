@@ -14,18 +14,18 @@
                 <h1 class="variable-font-bold text-6xl">هدا</h1>
             </div>
             <div class="w-full xs:w-80">
-                <form class="flex flex-col" action="{{ route('login') }}" method="POST">
+                <form class="flex flex-col" action="{{ route('register') }}" method="POST">
                     @csrf
                     <div>
                         <label for="mobile" class="block variable-font-medium text-sm text-gray-700 mb-2">@lang('موبایل')</label>
                         <input type="text" name="mobile" id="mobile" class="w-full text-sm text-gray-600 border border-gray-300 rounded-md h-8 pt-3 text-left dir-ltr focus">
                     </div>
-                    <div class="mt-4">
-                        <label for="password" class="block variable-font-medium text-sm text-gray-700 mb-2">@lang('رمز عبور')</label>
-                        <input type="password" name="password" id="password" class="w-full text-sm text-gray-600 border border-gray-300 rounded-md h-8 pt-3 text-left dir-ltr focus">
+                    <div>
+                        <label for="name" class="block variable-font-medium text-sm text-gray-700 mb-2">@lang('نام')</label>
+                        <input type="text" name="name" id="name" class="w-full text-sm text-gray-600 border border-gray-300 rounded-md h-8 pt-3 text-right dir-rtl focus">
                     </div>
-                    <button type="submit" class="bg-green-700 hover:bg-green-800 transition text-white focus-current ring-green-700 mt-4 h-8 rounded-md">ورود</button>
-                    <a href="{{ route('registerForm') }}" class="bg-gray-50 hover:bg-gray-100 transition text-gray focus-current ring-gray-50 mt-4 h-8 rounded-md text-center">رفتن به صفحه ثبت‌نام</a>
+                    <button type="submit" class="bg-green-700 hover:bg-green-800 transition text-white focus-current ring-green-700 mt-4 h-8 rounded-md">ثبت‌نام</button>
+                    <a href="{{ route('loginForm') }}" class="bg-gray-50 hover:bg-gray-100 transition text-gray focus-current ring-gray-50 mt-4 h-8 rounded-md text-center">رفتن به صفحه ورود</a>
                 </form>
                 @if ($errors->any())
                     <div class="flex flex-col">

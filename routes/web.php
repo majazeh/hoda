@@ -10,6 +10,9 @@ Route::get('/', function () {
 Route::get('/login', [\App\Http\Controllers\AuthController::class, 'loginForm'])->name('loginForm');
 Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
 
+Route::get('/register', [\App\Http\Controllers\AuthController::class, 'registerForm'])->name('registerForm');
+Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register'])->name('register');
+
 Route::prefix('dashboard')->middleware('auth')->group(function(){
     Route::get(null, [\App\Http\Controllers\DashboardController::class, 'home'])->name('dashboard');
     Route::get('logout', function(Request $request){
