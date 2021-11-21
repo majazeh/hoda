@@ -18,7 +18,7 @@
                         <div>
                             <div>
                                 <label for="title" class="block variable-font-medium text-sm text-gray-700 mb-1">@lang('عنوان')</label>
-                                <input type="text" name="title" id="title" value="{{ old('title') || isset($task) ? $task->title : null }}" class="w-full text-sm text-gray-600 border border-gray-300 rounded-md h-8 focus">
+                                <input type="text" name="title" id="title" value="{{ old('title') || (isset($task) ? $task->title : null) }}" class="w-full text-sm text-gray-600 border border-gray-300 rounded-md h-8 focus">
                             </div>
                             @if (!isset($task))
                                 <div class="mt-4">
@@ -82,7 +82,7 @@
                     </div>
                     <div class="mt-6">
                         <label class="inline-flex group">
-                            <input type="checkbox" name="qualitative" id="qualitative" {{ old('qualitative') || isset($task) && $task->qualitative ? 'checked' : '' }} class="w-3.5 h-3.5 rounded-sm">
+                            <input type="checkbox" name="qualitative" id="qualitative" {{ old('qualitative') || (isset($task) && $task->qualitative ? 'checked' : '') }} class="w-3.5 h-3.5 rounded-sm">
                             <span class="text-xs text-gray-600 mr-2 group-hover:text-brand">@lang('این وظیفه، یک وظیفه کیفی است که قصد دارم به صورت «انجام دادم» یا «انجام ندادم» گزارش کنم؛ وظایف کمی نیز یک بازه عددی بین ۰ تا ۵ گزارش می‌شوند.')</span>
                         </label>
                     </div>
